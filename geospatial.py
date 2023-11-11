@@ -1,18 +1,23 @@
-import requests 
-import urllib.parse
-import json
+import requests
 import pandas as pd
+import numpy as np
+import re
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import urllib.parse
+import os
+from dotenv import load_dotenv
 
-list_of_address = pd.read_csv("slim.csv",nrows=100)
-list_of_address
+load_dotenv()
+api_key = os.getenv("GOOGLE_MAPS_API")
 
-list_of_cord= pd.read_csv("cc.csv",nrows=100)
-list_of_cord
+df = pd.read_csv("slim.csv")
+df['GEO']=df['ADDRESS']+''+df['CITY']+''+ df['STATE']
+df_rando=df.sample(100)
 
-google_response = []
-
-for address in list_of_address: 
-    api_key = 'AIzaSyCI4TXTYXT5GOHEZnwj1lnOniYj3iywvQs'
+google_response=[]
+df_rando
+for address in df['GEO']: 
 
     search = 'https://maps.googleapis.com/maps/api/geocode/json?address='
 
@@ -32,46 +37,9 @@ for address in list_of_address:
     final = {'address': address, 'lat': lat_response, 'lon': lng_response}
     google_response.append(final)
 
-    print(f'....finished with {address}')
+    print(f'.finished with {address}')
 
 
-df = pd.DataFrame(google_response)
+adinfo= pd.DataFrame(google_response)
 
-
-
-##### reverse code 
-
-reverse_geocode_url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='
-latitude = '38.897676'
-longitude = '-77.036530'
-step1 = reverse_geocode_url + latitude + ',' + longitude + '&key=' + api_key
-
-
-
-###### function
-
-def geocode(address_here): 
-
-    api_key = 'AIzaSyCI4TXTYXT5GOHEZnwj1lnOniYj3iywvQs'
-
-    search = 'https://maps.googleapis.com/maps/api/geocode/json?address='
-
-    location_raw = address_here
-    location_clean = urllib.parse.quote(location_raw)
-
-    url_request_part1 = search + location_clean + '&key=' + api_key
-    url_request_part1
-
-    response = requests.get(url_request_part1)
-    response_dictionary = response.json()
-
-    lat_long = response_dictionary['results'][0]['geometry']['location']
-    lat_response = lat_long['lat']
-    lng_response = lat_long['lng']
-
-    final = {'address': address_here, 'lat': lat_response, 'lon': lng_response}
-
-    return final 
-
-
-geocode('5 bleecker st ny ny')
+adinfo.to_csv('geoSPATIAL.csv')
