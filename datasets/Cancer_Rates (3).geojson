@@ -1,0 +1,21 @@
+--2023-11-11 14:44:42--  https://data-lakecountyil.opendata.arcgis.com/datasets/lakecountyil::national-obesity-by-state.geojson?where=1=1
+Resolving data-lakecountyil.opendata.arcgis.com (data-lakecountyil.opendata.arcgis.com)... 23.23.51.121, 54.197.243.216, 44.215.202.167
+Connecting to data-lakecountyil.opendata.arcgis.com (data-lakecountyil.opendata.arcgis.com)|23.23.51.121|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/json]
+Saving to: ‘lakecountyil::national-obesity-by-state.geojson?where=1=1’
+
+     0K .......... .......... .......... .......... .......... 18.1M
+    50K .......... .......... .......... .......... .......... 17.0M
+   100K .......... .......... .......... .......... ..........  488M
+   150K .......... .......... .......... .......... .......... 17.1M
+   200K .......... .......... .......... .......... ..........  401M
+   250K .......... .......... .......... .......... ..........  657M
+   300K .......... .......... .......... .......... .......... 21.2M
+   350K .......... .......... .......... .......... ..........  176M
+   400K .......... .......... .......... .......... ..........  382M
+   450K .......... .......... .......... .......... ..........  378M
+   500K .......... ......                                       350M=0.01s
+
+2023-11-11 14:44:42 (43.4 MB/s) - ‘lakecountyil::national-obesity-by-state.geojson?where=1=1’ saved [529194]
+
