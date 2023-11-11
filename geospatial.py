@@ -13,17 +13,15 @@ api_key = os.getenv("GOOGLE_MAPS_API")
 
 df = pd.read_csv("slim.csv")
 df['GEO']=df['ADDRESS']+''+df['CITY']+''+ df['STATE']
-df_rando=df.sample(100)
+df_sample=df.sample(100)
 
 google_response=[]
-df_rando
-for address in df_rando['GEO']: 
 
+
+for address in df_sample['GEO']: 
     search = 'https://maps.googleapis.com/maps/api/geocode/json?address='
-
     location_raw = address
     location_clean = urllib.parse.quote(location_raw)
-
     url_request_part1 = search + location_clean + '&key=' + api_key
     url_request_part1
 
@@ -42,4 +40,4 @@ for address in df_rando['GEO']:
 
 df_rando= pd.DataFrame(google_response)
 
-df_info.to_csv('geoSPATIAL.csv')
+df_rando.to_csv('geoSPATIAL.csv')
