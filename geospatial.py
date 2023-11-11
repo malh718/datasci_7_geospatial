@@ -17,7 +17,7 @@ df_rando=df.sample(100)
 
 google_response=[]
 df_rando
-for address in df['GEO']: 
+for address in df_rando['GEO']: 
 
     search = 'https://maps.googleapis.com/maps/api/geocode/json?address='
 
@@ -40,6 +40,6 @@ for address in df['GEO']:
     print(f'.finished with {address}')
 
 
-adinfo= pd.DataFrame(google_response)
+df_rando= pd.DataFrame(google_response)
 
-adinfo.to_csv('geoSPATIAL.csv')
+df_info.to_csv('geoSPATIAL.csv')
