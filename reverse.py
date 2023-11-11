@@ -14,7 +14,7 @@ load_dotenv()
 api_key = os.getenv("GOOGLE_MAPS_API")
 
 df_cc = pd.read_csv("cc.csv")
-df_cc['GEO'] = df_cc['X'].astype(str) + ',' + df_cc['Y'].astype(str)
+df_cc['GEO'] = df_cc['X '].astype(str) + ',' + df_cc['Y'].astype(str)
 df_cc_sample = df_cc.sample(100)
 
 google_response = []
